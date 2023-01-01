@@ -1,5 +1,6 @@
 package cn.dxr.xiaoming.quake;
 
+import cn.chuanwise.xiaoming.annotation.Filter;
 import cn.chuanwise.xiaoming.annotation.Required;
 import cn.chuanwise.xiaoming.interactor.SimpleInteractors;
 import cn.chuanwise.xiaoming.user.XiaoMingUser;
@@ -26,8 +27,10 @@ public class JmaEEW extends SimpleInteractors<DxrQuake> {
     private static String update_report = null;
     private static String time_format;
     private static boolean notification_bool;
+    @Filter("开启紧急地震速报")
     @Required("DxrQuake.EEW")
     public void EEW(XiaoMingUser user) {
+        user.sendMessage("紧急地震速报接收功能已开启，当日本气象厅发布紧急地震速报时，机器人将会为您推送速报内容。");
         RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(1500).setConnectionRequestTimeout(1500).setSocketTimeout(1500).build();
         Thread thread = new Thread(() -> {
             CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
