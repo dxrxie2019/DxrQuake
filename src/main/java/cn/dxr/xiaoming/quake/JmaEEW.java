@@ -30,7 +30,8 @@ public class JmaEEW extends SimpleInteractors<DxrQuake> {
     @Filter("开启紧急地震速报")
     @Required("DxrQuake.EEW")
     public void EEW(XiaoMingUser user) {
-        user.sendMessage("紧急地震速报接收功能已开启，当日本气象厅发布紧急地震速报时，机器人将会为您推送速报内容。");
+        user.sendMessage("紧急地震速报接收功能已开启，当日本气象厅发布紧急地震速报时，机器人将会全局推送速报内容。");
+        user.sendMessage("提示: 如果要关闭该功能，请重启机器人。");
         RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(1500).setConnectionRequestTimeout(1500).setSocketTimeout(1500).build();
         Thread thread = new Thread(() -> {
             CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -81,6 +82,7 @@ public class JmaEEW extends SimpleInteractors<DxrQuake> {
                 }
             }
         });
+        thread.start();
     }
 }
 
