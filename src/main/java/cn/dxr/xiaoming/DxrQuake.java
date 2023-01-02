@@ -14,11 +14,11 @@ public class DxrQuake extends JavaPlugin {
     }
 
     public void onEnable() {
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new Helper(), (Plugin) this);
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new CencData(), (Plugin) this);
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new JmaData(), (Plugin) this);
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new JmaEEW(), (Plugin) this);
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new CencHistory(), (Plugin) this);
-        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new JmaHistory(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new Helper(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new CencData(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new JmaData(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new CencHistory(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new JmaHistory(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new TimeSender(), (Plugin) this);
     }
 }
