@@ -26,8 +26,8 @@ public class JmaHistory extends SimpleInteractors<DxrQuake> {
             JSONObject data5  = jsonObject.getJSONObject("No6");
             user.sendMessage("日本气象厅历史地震信息(6条)" + "\n1.时间:" + data.getString("time") + "\n 震源地:" + data.getString("location") + "\n震级:M" + data.getString("magnitude") + "\n 深度:" + data.getString("depth") + "\n 最大震度:" + data.getString("shindo") + "\n2.时间:" + data1.getString("time") + "\n震源地:" + data1.getString("location") + "\n震级:M" + data1.getString("magnitude") + "\n最大震度:" + data1.getString("shindo") + "   " + "\n3.时间:" + data2.getString("time") + "\n震源地:" + data2.getString("location") + "\n震级:M" + data2.getString("magnitude") + "\n最大震度:" + data2.getString("shindo") + "   " + "\n4.时间:" + data3.getString("time") + "\n震源地:" + data3.getString("location") + "\n震级:M" + data3.getString("magnitude") + "\n最大震度:" + data3.getString("shindo") + "   " + "\n5.时间:" + data4.getString("time") + "\n震源地:" + data4.getString("location") + "\n震级:M" + data4.getString("magnitude") + "\n最大震度:" + data4.getString("shindo") + "   " + "\n6.时间:" + data5.getString("time") + "\n震源地:" + data5.getString("location") + "\n震级:M" + data5.getString("magnitude") + "\n最大震度:" + data5.getString("shindo"));
         }catch (Exception e) {
-            System.out.println("出现错误!" + e);
-            user.sendMessage("出现错误!" + e);
+            getLogger().error("出现错误!" + e);
+            user.sendError("出现错误!" + e);
         }
     }
 }

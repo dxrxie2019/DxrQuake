@@ -21,8 +21,8 @@ public class CencData extends SimpleInteractors<DxrQuake> {
             JSONObject data = jsonObject.getJSONObject("data");
             user.sendMessage("中国地震台网" + data.getString("type") + "报" + "\n 发震时刻:" + data.getString("occurTime") + "\n 震中:" + data.getString("epicenter") + "\n震级:M" + data.getString("magnitude") + "\n 深度:" + data.getString("depth") + "KM" + "\n最大烈度(粗估):" + data.getString("maxInt") + "度");
         } catch (Exception e) {
-            System.out.println("出现错误!" + e);
-            user.sendMessage("出现错误!" + e);
+            getLogger().error("出现错误!" + e);
+            user.sendError("出现错误!" + e);
         }
     }
 }

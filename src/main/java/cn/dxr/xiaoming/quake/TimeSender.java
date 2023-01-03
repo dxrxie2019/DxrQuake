@@ -20,7 +20,7 @@ public class TimeSender extends SimpleInteractors<DxrQuake> {
             JSONObject jsonObject = JSON.parseObject(url);
             JSONObject data = jsonObject.getJSONObject("JST");
             JSONObject data1 = jsonObject.getJSONObject("CST");
-            user.sendMessage("当前准确时间:" + "\n北京时间: " + data.getString("str") + "\n 东京时间: " + data1.getString("str"));
+            user.sendMessage("当前准确时间:" + "\n北京时间: " + data1.getString("str") + "\n 东京时间: " + data.getString("str"));
         }catch (Exception e) {
             getLogger().error("出现错误!" + e);
             user.sendError("出现错误!" + e);
