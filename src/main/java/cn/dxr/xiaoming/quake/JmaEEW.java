@@ -27,7 +27,6 @@ public class JmaEEW {
             @Override
             public void run() {
                 RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(1500).setConnectionRequestTimeout(1500).setSocketTimeout(1500).build();
-                Thread thread = new Thread(() -> {
                     CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
                     try {
                         HttpGet request = new HttpGet("https://api.wolfx.jp/nied_eew.json?");
@@ -55,17 +54,14 @@ public class JmaEEW {
                                 DxrQuake.getInstance().getXiaoMingBot().getContactManager().getPrivateContacts().forEach(privateContact -> privateContact.sendMessage("紧急地震速报" + "(" + flag + ")" +  "(" + finalType + "第" + num + "报)" + "\n 时间:" + origin_time + "(北京时间)" + "\n 震源地:" + region + "\n 震级:M" + mag + "\n 深度:" + depth + "\n 最大震度:" + shindo + "\n 发报时间:" + report_time + "(东京时间)"));
                             }
                         }
-                    } catch (IllegalStateException | IOException | ParseException e) {
-                        System.out.println("api接口错误，正在重试..." + e);
+                    } catch (IllegalStateException | IOException | ParseException ignored) {
                     } finally {
                         try {
                             httpClient.close();
                         } catch (IOException e) {
-                            System.out.println("无法关闭连接，正在重试..." + e);
+                            DxrQuake.getInstance().getLogger().error("无法关闭连接，正在重试..." + e);
                         }
                     }
-                });
-                thread.start();
             }
         };
         new Timer().schedule(timerTask, 0L, 1000L);
