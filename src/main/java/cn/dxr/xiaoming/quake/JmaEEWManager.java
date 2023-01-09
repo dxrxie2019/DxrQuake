@@ -11,7 +11,7 @@ public class JmaEEWManager extends SimpleInteractors<DxrQuake> {
     @Filter("开启紧急地震速报")
     @Required("DxrQuake.EEW")
     void Manager(XiaoMingUser user, @FilterParameter("紧急地震速报") String text) {
-        user.sendMessage("紧急地震速报推送功能已开启,当日本气象厅发布紧急地震速报时,机器人将会向全局(机器人的所有好友,不包括群聊)推送速报内容,该功能可能会导致机器人被风控,非必要建议不使用该功能,若要关闭该功能,请重启机器人。");
+        user.sendMessage("紧急地震速报推送功能已开启,当日本气象厅发布紧急地震速报时,机器人将会向所有群聊推送速报信息,如果群聊过多(建议群聊不超过5个)可能导致机器人被风控，请酌情选择。");
         getXiaoMingBot().getScheduler().run(JmaEEW.EEW());
     }
 }

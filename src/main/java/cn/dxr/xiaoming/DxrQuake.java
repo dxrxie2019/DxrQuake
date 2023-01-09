@@ -21,6 +21,9 @@ public class DxrQuake extends JavaPlugin {
         getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new JmaHistory(), (Plugin) this);
         getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new TimeSender(), (Plugin) this);
         getXiaoMingBot().getInteractorManager().registerInteractors((Interactors) new StationData(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new JmaDataSenderManager(), (Plugin) this);
         getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new JmaEEWManager(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new SCEEWManager(), (Plugin) this);
+        getXiaoMingBot().getInteractorManager().registerInteractors((Interactors)new CencDataSenderManager(), (Plugin) this);
     }
 }
